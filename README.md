@@ -2,6 +2,8 @@
 
 Exam project for testing competencies in Node.js and Vue.js
 
+![Screen](./screen.png)
+
 ## Usage:
 
 Serverside:
