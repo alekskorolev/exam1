@@ -1,8 +1,14 @@
 <template>
-  <td class="cell">
-    <div class="icon-slot" v-bind:style="{ width: (level * 30 + 30) + 'px'}"><slot></slot></div>
-    <span>{{ value }}</span>
-  </td>
+  <component
+    class="cell"
+    v-bind:style="{ paddingLeft: (level * 30 + 30) + 'px'}"
+    v-bind:is="isHead ? 'th' : 'td'"
+  >
+    <div class="content">
+      <slot></slot>
+      <span v-if="value !== undefined">{{ value }}</span>
+    </div>
+  </component>
 </template>
 
 <script lang="ts">
@@ -15,21 +21,25 @@ import { Options, Vue } from 'vue-class-component';
       type: Number,
       default: 0,
     },
+    isHead: {
+      type: Boolean,
+      default: false,
+    },
   },
 })
 export default class Cell extends Vue {
   public value!: string|number;
 
   public level!: number;
+
+  public isHead!: boolean;
 }
 </script>
 
 <style lang="scss" scoped>
 .cell {
-  position: relative;
-  .icon-slot {
-    display: inline-block;
-    left: -30px;
+  .content {
+    position: relative;
   }
 }
 </style>

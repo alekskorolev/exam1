@@ -1,7 +1,12 @@
 <template>
-  <tr class="row">
+  <tr class="row" v-bind:class="[extraClass]">
     <Cell v-bind:value="item.title" v-bind:level="level">
-      <button v-on:click.prevent="toogleChild" v-if="hasChild">></button>
+      <DropIcon
+        v-on:click.prevent="toogleChild"
+        v-if="hasChild"
+        v-bind:opened="opened"
+        class="icon"
+      ></DropIcon>
     </Cell>
     <Cell v-bind:value="item.countView"></Cell>
     <Cell v-bind:value="item.countPlay"></Cell>
@@ -25,6 +30,7 @@
 import { Options, Vue } from 'vue-class-component';
 import { IDataItem } from '@/types/index.d';
 import Cell from './Cell.vue';
+import DropIcon from './DropIcon.vue';
 
 @Options({
   props: {
@@ -33,11 +39,17 @@ import Cell from './Cell.vue';
       type: Number,
       default: 0,
     },
+    isHead: {
+      type: Boolean,
+      default: false,
+    },
+    extraClass: String,
   },
   components: {
     Cell,
     // eslint-disable-next-line
     Row,
+    DropIcon,
   },
 })
 class Row extends Vue {
@@ -46,6 +58,10 @@ class Row extends Vue {
   public level!: number;
 
   public opened = false;
+
+  public isHead!: boolean;
+
+  public extraClass?: string;
 
   public get hasChild(): boolean {
     return this.item.children?.length > 0;
@@ -66,5 +82,14 @@ export default Row;
   text-align: left;
   display: grid;
   grid-template-columns: 40% 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  &.summ {
+    border: none;
+    background-color:lightsteelblue;
+  }
+  .icon {
+    display: block;
+    position: absolute;
+    left: -30px;
+  }
 }
 </style>

@@ -1,9 +1,9 @@
-import { IState } from '@/types/index.d';
+import { IDataResult } from '@/types/index.d';
 import axios from 'axios';
 
-const URL = 'http://192.168.1.121:4000/';
+const URL = '/api';
 
-export default async function getData(): Promise<IState> {
+export default async function getData(): Promise<IDataResult> {
   try {
     const result = await axios.get(URL);
     return result.data;

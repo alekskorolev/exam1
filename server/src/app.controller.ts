@@ -8,7 +8,6 @@ export class AppController {
   @Get()
   async data(): Promise<object> {
     const data = await this.appService.getData();
-    console.log(data);
     return data;
   }
 }

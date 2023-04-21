@@ -28,7 +28,7 @@ export default class HomeView extends Vue {
   }
 
   public get items(): Array<IDataItem> {
-    return this.$store.state.items;
+    return this.$store.getters.sorted;
   }
 }
 </script>
