@@ -2,17 +2,26 @@
 
 Exam project for testing competencies in Node.js and Vue.js
 
-Usage:
+## Usage:
 
 Serverside:
+
     - Nodejs@18.14.0
+
     - Typesctript
+
     - NestJs
+
 Clientside:
+
     - Nodejs@18.14.0
+
     - Typesctript
+
     - Vuejs
+
     - Vuex
+
     - Vue Router
 
 ## Running the proejct
